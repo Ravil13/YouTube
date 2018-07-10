@@ -12,6 +12,7 @@
 		E0B9787C20F4CFC4004EA24C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0B9787A20F4CFC4004EA24C /* Main.storyboard */; };
 		E0B9787E20F4CFC5004EA24C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0B9787D20F4CFC5004EA24C /* Assets.xcassets */; };
 		E0B9788120F4CFC5004EA24C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0B9787F20F4CFC5004EA24C /* LaunchScreen.storyboard */; };
+		E0B9788B20F4EE40004EA24C /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = E0B9788A20F4EE40004EA24C /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		E0B9787D20F4CFC5004EA24C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E0B9788020F4CFC5004EA24C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E0B9788220F4CFC5004EA24C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E0B9788A20F4EE40004EA24C /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +40,7 @@
 		E0B9786A20F4CFC3004EA24C = {
 			isa = PBXGroup;
 			children = (
+				E0B9788A20F4EE40004EA24C /* .gitignore */,
 				E0B9787520F4CFC4004EA24C /* YouTube */,
 				E0B9787420F4CFC4004EA24C /* Products */,
 			);
@@ -122,6 +125,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0B9788B20F4EE40004EA24C /* .gitignore in Resources */,
 				E0B9788120F4CFC5004EA24C /* LaunchScreen.storyboard in Resources */,
 				E0B9787E20F4CFC5004EA24C /* Assets.xcassets in Resources */,
 				E0B9787C20F4CFC4004EA24C /* Main.storyboard in Resources */,
@@ -281,6 +285,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WTRCRAQ6PL;
 				INFOPLIST_FILE = YouTube/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -298,6 +303,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WTRCRAQ6PL;
 				INFOPLIST_FILE = YouTube/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
