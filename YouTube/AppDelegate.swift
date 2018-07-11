@@ -21,6 +21,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let layout = UICollectionViewFlowLayout()// UICollectionView must be initialized with a non-nil layout parameter
         window?.rootViewController = UINavigationController(rootViewController: HomeController(collectionViewLayout: layout))
         
+        UINavigationBar.appearance().barTintColor = UIColor.rgb(230, 32, 31)
+        
+        application.statusBarStyle = .lightContent // In info.plist add "View controller-based status bar appearance" - NO
+        let statusBarBackgroundView = UIView()
+        statusBarBackgroundView.backgroundColor = UIColor.rgb(194, 31, 31)
+        window?.addSubview(statusBarBackgroundView)
+        window?.addConstraintsWith(format: "H:|[v0]|", views: statusBarBackgroundView)
+        window?.addConstraintsWith(format: "V:|[v0(20)]", views: statusBarBackgroundView)
+        
         return true
     }
 
