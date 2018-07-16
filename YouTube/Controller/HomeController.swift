@@ -10,28 +10,36 @@ import UIKit
 
 class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    var videos: [Video] = {
-        var kanyeChannel = Channel()
-        kanyeChannel.name = "KanyeIsTheBestChannel"
-        kanyeChannel.profileImageName = "kanye_profile"
-        
-        var blankSpace = Video()
-        blankSpace.thumbNailImageName = "taylor_swift_blank_space"
-        blankSpace.title = "Taylor Swift - Blank Space"
-        blankSpace.channel = kanyeChannel
-        blankSpace.numberOfViews = 1_937_432_879
-        
-        var badBlood = Video()
-        badBlood.thumbNailImageName = "taylor_swift_bad_blood"
-        badBlood.title = "Taylor Swift - Bad Blood featuring Kendrick Lamar"
-        badBlood.channel = kanyeChannel
-        badBlood.numberOfViews = 4_453_894_431
-        
-        return [blankSpace, badBlood]
-    }()
+    var videos: [Video] = []
+    
+    func fetchVideos() {
+        let urlString = "https://s3-us-west-2.amazonaws.com/youtubeassets/home.json"
+        let url = URL(string: urlString)
+        URLSession.shared.dataTask(with: url!) { (data, response, error) in
+            DispatchQueue.main.async {
+                if let error = error {
+                    print(error)
+                    return
+                }
+                
+                guard let data = data else { return }
+                
+                do {
+                    let decoder = JSONDecoder()
+                    decoder.keyDecodingStrategy = .convertFromSnakeCase
+                    self.videos = try decoder.decode([Video].self, from: data)
+                    self.collectionView?.reloadData()
+                } catch let jsonError {
+                    print("Failed to decode: ", jsonError)
+                }
+            }
+        }.resume()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        fetchVideos()
         
         navigationItem.title = "Home"
         navigationController?.navigationBar.isTranslucent = false

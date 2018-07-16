@@ -25,48 +25,50 @@ class VideoCell: BaseCell {
     
     var video: Video? {
         didSet {
-            thumbnailImageView.image = UIImage(named: (video?.thumbNailImageName)!)
+            setupThumbNailImage()
+            setupProfileImage()
             titleLabel.text = video?.title
-            
-            if let profileImageName = video?.channel?.profileImageName {
-                userProfileImageView.image = UIImage(named: profileImageName)
-            }
-            
             if let channelName = video?.channel?.name, let numberOfViews = video?.numberOfViews {
                 let numberFormater = NumberFormatter()
                 numberFormater.numberStyle = .decimal
-                let subTitleText = "\(channelName) • \(numberFormater.string(from: numberOfViews)!) • 2 years ago"
+                let subTitleText = "\(channelName) • \(numberFormater.string(from: NSNumber(integerLiteral: numberOfViews))!) • 2 years ago"
                 subtitleTextView.text = subTitleText
             }
-            
-//            if let title = video?.title {
-//                let size = CGSize(width: frame.width - 16 - 44 - 8 - 16, height: 1000)
-//                let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
-//                let estimatedRect = NSString(string: title).boundingRect(with: size, options: options, attributes: [NSAttributedStringKey : UIFont.systemFont(ofSize: 14)], context: nil)
-//            }
+        }
+    }
+    
+    func setupProfileImage() {
+        if let pofileImageURL = video?.channel?.profileImageName {
+            self.userProfileImageView.loadImageUsing(urlString: pofileImageURL)
+        }
+    }
+    
+    func setupThumbNailImage() {
+        if let thumbnailURL = video?.thumbnailImageName {
+            self.thumbnailImageView.loadImageUsing(urlString: thumbnailURL)
         }
     }
     
     let thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "taylor_swift_blank_space")
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
+        imageView.backgroundColor = .lightGray
         return imageView
     }()
     
     let userProfileImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "taylor_swift_profile")
         imageView.layer.cornerRadius = 22
         imageView.layer.masksToBounds = true
+        imageView.contentMode = .scaleAspectFill
+        imageView.backgroundColor = .lightGray
         return imageView
     }()
     
     let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Taylor Swift - Blank Space"
         label.numberOfLines = 2
         return label
     }()
@@ -74,7 +76,6 @@ class VideoCell: BaseCell {
     let subtitleTextView: UITextView = {
         let textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.text = "TaylorSwiftVEVO • 1,604,684,607 views • 2 years ago"
         textView.textContainerInset = UIEdgeInsetsMake(0, -4, 0, 0)
         textView.textColor = .lightGray
         return textView

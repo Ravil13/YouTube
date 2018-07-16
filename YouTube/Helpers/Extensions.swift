@@ -26,3 +26,20 @@ extension UIView {
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: format, options: NSLayoutFormatOptions(), metrics: nil, views: viewsDictionary))
     }
 }
+
+extension UIImageView {
+    func loadImageUsing(urlString: String) {
+        let url = URL(string: urlString)
+        URLSession.shared.dataTask(with: url!) { (data, response, error) in
+            if error != nil {
+                print(error!)
+                return
+            }
+            guard let data = data else { return }
+            DispatchQueue.main.async {
+                let image = UIImage(data: data)
+                self.image = image
+            }
+        }.resume()
+    }
+}

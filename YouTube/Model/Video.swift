@@ -8,16 +8,30 @@
 
 import UIKit
 
-class Video: NSObject {
-    var thumbNailImageName: String?
-    var title: String?
-    var numberOfViews: NSNumber?
-    var uploadDate: Date?
-    
-    var channel: Channel?
+//class Video: NSObject {
+//    var thumbNailImageName: String?
+//    var title: String?
+//    var numberOfViews: NSNumber?
+//    var uploadDate: Date?
+//
+//    var channel: Channel?
+//}
+//
+//class Channel: NSObject {
+//    var name: String?
+//    var profileImageName: String?
+//}
+
+
+struct Video: Codable {
+    let title: String?
+    let numberOfViews: Int?
+    let thumbnailImageName: String?
+    let channel: Channel?
+    let duration: Int?
 }
 
-class Channel: NSObject {
-    var name: String?
-    var profileImageName: String?
+struct Channel: Codable {
+    let name: String?
+    let profileImageName: String?
 }
