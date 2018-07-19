@@ -17,6 +17,7 @@
 		E0B9787E20F4CFC5004EA24C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0B9787D20F4CFC5004EA24C /* Assets.xcassets */; };
 		E0B9788120F4CFC5004EA24C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0B9787F20F4CFC5004EA24C /* LaunchScreen.storyboard */; };
 		E0B9788B20F4EE40004EA24C /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = E0B9788A20F4EE40004EA24C /* .gitignore */; };
+		E0B9A65421008CAB00F271F7 /* SettingsLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B9A65321008CAB00F271F7 /* SettingsLauncher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		E0B9788020F4CFC5004EA24C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E0B9788220F4CFC5004EA24C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E0B9788A20F4EE40004EA24C /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		E0B9A65321008CAB00F271F7 /* SettingsLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLauncher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 			isa = PBXGroup;
 			children = (
 				E0B9787820F4CFC4004EA24C /* HomeController.swift */,
+				E0B9A65321008CAB00F271F7 /* SettingsLauncher.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -186,6 +189,7 @@
 				E0B9787920F4CFC4004EA24C /* HomeController.swift in Sources */,
 				E067211C20F8E46200010C4B /* Video.swift in Sources */,
 				E012A89520F606C00096E20B /* VideoCell.swift in Sources */,
+				E0B9A65421008CAB00F271F7 /* SettingsLauncher.swift in Sources */,
 				E012A89220F606340096E20B /* Extensions.swift in Sources */,
 				E0B9787720F4CFC4004EA24C /* AppDelegate.swift in Sources */,
 				E084D94320F734C90069384D /* MenuBar.swift in Sources */,
