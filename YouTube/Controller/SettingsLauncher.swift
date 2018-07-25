@@ -43,6 +43,8 @@ class SettingsLauncher: NSObject, UICollectionViewDataSource, UICollectionViewDe
                 Setting(name: "Cancel", imageName: "cancel")]
     }()
     
+    var homeController: HomeController?
+    
     @objc func showSettings() {
         // show menu
         if let window = UIApplication.shared.keyWindow {
@@ -85,13 +87,22 @@ class SettingsLauncher: NSObject, UICollectionViewDataSource, UICollectionViewDe
         return 0
     }
     
-    @objc func handleDismiss() {
+    @objc func handleDismiss(setting: NSObject) {
         UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
             self.blackView.alpha = 0
             if let window = UIApplication.shared.keyWindow {
                 self.collectionView.frame.origin.y = window.frame.height
             }
-        }, completion: nil)
+        }) { (isCompleted: Bool) in
+            if setting is Setting && (setting as! Setting).name != "Cancel" {
+                self.homeController? .showControllerFor(setting: setting as! Setting)
+            }
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let setting = self.settings[indexPath.row]
+        handleDismiss(setting: setting)
     }
     
     override init() {
