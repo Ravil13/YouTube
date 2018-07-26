@@ -9,13 +9,22 @@
 import UIKit
 
 class Setting: NSObject {
-    let name: String
+    let name: SettingName
     let imageName: String
     
-    init(name: String, imageName: String) {
+    init(name: SettingName, imageName: String) {
         self.name = name
         self.imageName = imageName
     }
+}
+
+enum SettingName: String {
+    case cancel = "Cancel" 
+    case settings = "Settings"
+    case termsPrivacy = "Terms & privacy"
+    case sendFeedback = "Send Feedback"
+    case help = "Help"
+    case switchAccount = "Switch Account"
 }
 
 class SettingsLauncher: NSObject, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -33,14 +42,12 @@ class SettingsLauncher: NSObject, UICollectionViewDataSource, UICollectionViewDe
     let cellHeight: CGFloat = 50
     
     let settings: [Setting] = {
-        let settings = Setting(name: "Settings", imageName: "settings")
-        
-        return [Setting(name: "Settings", imageName: "settings"),
-                Setting(name: "Terms & privacy", imageName: "privacy"),
-                Setting(name: "Send Feedback", imageName: "feedback"),
-                Setting(name: "Help", imageName: "help"),
-                Setting(name: "Switch Account", imageName: "switch_account"),
-                Setting(name: "Cancel", imageName: "cancel")]
+        return [Setting(name: .settings, imageName: "settings"),
+                Setting(name: .termsPrivacy, imageName: "privacy"),
+                Setting(name: .sendFeedback, imageName: "feedback"),
+                Setting(name: .help, imageName: "help"),
+                Setting(name: .switchAccount, imageName: "switch_account"),
+                Setting(name: .cancel, imageName: "cancel")]
     }()
     
     var homeController: HomeController?
@@ -64,7 +71,7 @@ class SettingsLauncher: NSObject, UICollectionViewDataSource, UICollectionViewDe
                 self.collectionView.frame.origin.y = y - height
             }, completion: nil)
             
-            blackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDismiss)))
+            blackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSettingOrDismiss(setting:))))
         }
     }
     
@@ -87,22 +94,22 @@ class SettingsLauncher: NSObject, UICollectionViewDataSource, UICollectionViewDe
         return 0
     }
     
-    @objc func handleDismiss(setting: NSObject) {
+    @objc func handleSettingOrDismiss(setting: Setting) {
         UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
             self.blackView.alpha = 0
             if let window = UIApplication.shared.keyWindow {
                 self.collectionView.frame.origin.y = window.frame.height
             }
         }) { (isCompleted: Bool) in
-            if setting is Setting && (setting as! Setting).name != "Cancel" {
-                self.homeController? .showControllerFor(setting: setting as! Setting)
+            if setting.name != .cancel {
+                self.homeController? .showControllerFor(setting: setting)
             }
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let setting = self.settings[indexPath.row]
-        handleDismiss(setting: setting)
+        handleSettingOrDismiss(setting: setting)
     }
     
     override init() {
