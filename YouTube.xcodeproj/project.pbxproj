@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E0005147210B06FC000C9B3D /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0005146210B06FC000C9B3D /* ApiService.swift */; };
 		E00F413521075411000E7ACD /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00F413421075411000E7ACD /* SettingCell.swift */; };
 		E012A89220F606340096E20B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E012A89120F606340096E20B /* Extensions.swift */; };
 		E012A89520F606C00096E20B /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E012A89420F606C00096E20B /* VideoCell.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E0005146210B06FC000C9B3D /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		E00F413421075411000E7ACD /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		E012A89120F606340096E20B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E012A89420F606C00096E20B /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
@@ -49,6 +51,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E0005145210B06E2000C9B3D /* ApiService */ = {
+			isa = PBXGroup;
+			children = (
+				E0005146210B06FC000C9B3D /* ApiService.swift */,
+			);
+			path = ApiService;
+			sourceTree = "<group>";
+		};
 		E012A89020F605E80096E20B /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +114,7 @@
 		E0B9787520F4CFC4004EA24C /* YouTube */ = {
 			isa = PBXGroup;
 			children = (
+				E0005145210B06E2000C9B3D /* ApiService */,
 				E067211A20F8E44600010C4B /* Model */,
 				E012A89320F606A30096E20B /* View */,
 				E012A89620F607440096E20B /* Controller */,
@@ -194,6 +205,7 @@
 				E00F413521075411000E7ACD /* SettingCell.swift in Sources */,
 				E012A89520F606C00096E20B /* VideoCell.swift in Sources */,
 				E0B9A65421008CAB00F271F7 /* SettingsLauncher.swift in Sources */,
+				E0005147210B06FC000C9B3D /* ApiService.swift in Sources */,
 				E012A89220F606340096E20B /* Extensions.swift in Sources */,
 				E0B9787720F4CFC4004EA24C /* AppDelegate.swift in Sources */,
 				E084D94320F734C90069384D /* MenuBar.swift in Sources */,

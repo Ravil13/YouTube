@@ -13,27 +13,10 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     var videos: [Video] = []
     
     func fetchVideos() {
-        let urlString = "https://s3-us-west-2.amazonaws.com/youtubeassets/home.json"
-        let url = URL(string: urlString)
-        URLSession.shared.dataTask(with: url!) { (data, response, error) in
-            DispatchQueue.main.async {
-                if let error = error {
-                    print(error)
-                    return
-                }
-                
-                guard let data = data else { return }
-                
-                do {
-                    let decoder = JSONDecoder()
-                    decoder.keyDecodingStrategy = .convertFromSnakeCase
-                    self.videos = try decoder.decode([Video].self, from: data)
-                    self.collectionView?.reloadData()
-                } catch let jsonError {
-                    print("Failed to decode: ", jsonError)
-                }
-            }
-        }.resume()
+        ApiService.shared.fetchVideo { (videos) in
+            self.videos = videos
+            self.collectionView?.reloadData()
+        }
     }
     
     override func viewDidLoad() {
@@ -41,11 +24,10 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         fetchVideos()
         
-        navigationItem.title = "Home"
         navigationController?.navigationBar.isTranslucent = false
         
         let titleLable = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 32, height: view.frame.height))
-        titleLable.text = "Home"
+        titleLable.text = "  Home"
         titleLable.textColor = .white
         titleLable.font = UIFont.systemFont(ofSize: 24)
         navigationItem.titleView = titleLable
@@ -98,9 +80,19 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     private func setupMenuBar() {
+        navigationController?.hidesBarsOnSwipe = true
+        
+        let redView = UIView()
+        redView.backgroundColor = UIColor.rgb(230, 32, 31)
+        view.addSubview(redView)
+        view.addConstraintsWith(format: "H:|[v0]|", views: redView)
+        view.addConstraintsWith(format: "V:[v0(50)]", views: redView)
+        
         view.addSubview(menuBar)
         view.addConstraintsWith(format: "H:|[v0]|", views: menuBar)
-        view.addConstraintsWith(format: "V:|[v0(50)]", views: menuBar)
+        view.addConstraintsWith(format: "V:[v0(50)]", views: menuBar)
+        
+        menuBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
