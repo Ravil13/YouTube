@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E0005147210B06FC000C9B3D /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0005146210B06FC000C9B3D /* ApiService.swift */; };
+		E005F7B421105A4300A75EC1 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E005F7B321105A4300A75EC1 /* FeedCell.swift */; };
 		E00F413521075411000E7ACD /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00F413421075411000E7ACD /* SettingCell.swift */; };
 		E012A89220F606340096E20B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E012A89120F606340096E20B /* Extensions.swift */; };
 		E012A89520F606C00096E20B /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E012A89420F606C00096E20B /* VideoCell.swift */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		E0005146210B06FC000C9B3D /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
+		E005F7B321105A4300A75EC1 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		E00F413421075411000E7ACD /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		E012A89120F606340096E20B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E012A89420F606C00096E20B /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				E012A89420F606C00096E20B /* VideoCell.swift */,
 				E084D94220F734C90069384D /* MenuBar.swift */,
 				E00F413421075411000E7ACD /* SettingCell.swift */,
+				E005F7B321105A4300A75EC1 /* FeedCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0B9787920F4CFC4004EA24C /* HomeController.swift in Sources */,
+				E005F7B421105A4300A75EC1 /* FeedCell.swift in Sources */,
 				E067211C20F8E46200010C4B /* Video.swift in Sources */,
 				E00F413521075411000E7ACD /* SettingCell.swift in Sources */,
 				E012A89520F606C00096E20B /* VideoCell.swift in Sources */,
